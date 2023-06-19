@@ -1,0 +1,87 @@
+﻿@page
+@using Ticket_App.Models
+
+@model Ticket_App.Pages.IndexModel
+@{
+    ViewData["Title"] = "Acasă";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<div class="text-center" style="border: 1px solid black; background-color: #F3F3F3;">
+    <br />
+    <img src="Pictures/banner.png" class="img-fluid" id="img-banner"/>
+    <br />
+    <br />
+    <p style="font-size:35px;"> Pentru a simplifica cererile de asistență și a vă servi mai bine, <br /> utilizăm un sistem de tichete de asistență Support HR. </>
+        <br />
+    <p style="font-size:40px; font-weight:bold"> Scanați cartela pe cititor pentru a începe:</p>
+    <img src="~/Pictures/card_scan.png" class="img-fluid" id="img-cardScan"/>
+    <form method="post">    
+        <input type="text" class="txtCardId" id="txtCardId" name="CardNumber" autofocus onfocus="this.select()" autocomplete="off" />
+    <br />
+    <br />
+    <div class="form-group">
+        <input type="submit" asp-page-handler="Submit" style="font-size: xx-large" value="Crează solicitare" class="btn btn-primary" hidden />
+    </div>
+    <p align="center" style="color:red">@Html.ValidationMessage("InvalidCardNumber")</p>
+    </form>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+        (function () {
+            
+            const idleDurationSecs = 30;    // X number of seconds
+            const redirectUrl = '/Index';  // Redirect idle users to this URL
+            let idleTimeout; // variable to hold the timeout, do not modify
+
+            const resetIdleTimeout = function () {
+
+                // Clears the existing timeout
+                if (idleTimeout) clearTimeout(idleTimeout);
+
+                // Set a new idle timeout to load the redirectUrl after idleDurationSecs
+                idleTimeout = setTimeout(() => location.href = redirectUrl, idleDurationSecs * 1000);
+            };
+
+            // Init on page load
+            resetIdleTimeout();
+
+            // Reset the idle timeout on any of the events listed below
+            ['click', 'touchstart'].forEach(evt =>
+                document.addEventListener(evt, resetIdleTimeout, false)
+            );
+
+
+        })();
+        
+    </script>
+
+    <script >
+        $(function () {
+            $(".txtCardId").bind("focusout", function (e) {
+                if (!isValidString($(this).val())) {
+                    e.preventDefault();
+                    $(this).focus();
+                }
+            });
+        });
+
+        // Function to check whether the
+        // string is "geeks" or not
+        function isValidString(s) {
+            return s != "" && s == "";
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            history.pushState(null, document.title, location.href);
+        });
+    </script>
+}

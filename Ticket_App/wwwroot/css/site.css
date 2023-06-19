@@ -1,0 +1,119 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+form {
+    max-width: 1500px;
+    margin: 50px auto 0;
+}
+
+.img-fluid{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#img-banner{
+    max-height: 300px;
+}
+
+#img-cardScan{
+    max-height:250px;
+}
+
+#imgButton{
+    max-height:100px;
+    max-width: 100px;
+    float:left;
+    position:relative;
+    top:-20px;
+}
+
+.txtCardId {
+    user-select: none;
+}
+
+.radiobtn {
+    position: relative;
+    display: block;
+}
+
+    .radiobtn label {
+        display: block;
+        background-color: #343a40;
+        color: white;
+        border-radius: 5px;
+        padding: 30px 40px;
+        border: 2px solid grey;
+        margin-bottom: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 25px;
+    }
+
+        .radiobtn label:after,
+        .radiobtn label:before {
+            content: "";
+            position: absolute;
+            right: 11px;
+            top: 11px;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            background-color: grey;
+        }
+
+        .radiobtn label:before {
+            background: transparent;
+            transition: 0.1s width cubic-bezier(0.075, 0.82, 0.165, 1) 0s, 0.3s height cubic-bezier(0.075, 0.82, 0.165, 2) 0.1s;
+            z-index: 2;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-size: 13px;
+            background-position: center;
+            padding-left: 5px;
+            width: 0;
+            height: 0;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNS4zIDEzLjIiPiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE0LjcuOGwtLjQtLjRhMS43IDEuNyAwIDAgMC0yLjMuMUw1LjIgOC4yIDMgNi40YTEuNyAxLjcgMCAwIDAtMi4zLjFMLjQgN2ExLjcgMS43IDAgMCAwIC4xIDIuM2wzLjggMy41YTEuNyAxLjcgMCAwIDAgMi40LS4xTDE1IDMuMWExLjcgMS43IDAgMCAwLS4yLTIuM3oiIGRhdGEtbmFtZT0iUGZhZCA0Ii8+PC9zdmc+);
+        }
+
+input[type="radio"] {
+    display: none;
+    position: absolute;
+    width: 100%;
+    appearance: none;
+}
+
+    input[type="radio"]:checked + label {
+        background-color: lightgreen;
+        color: #343a40;
+        animation-name: blink;
+        animation-duration: 1s;
+        border-color: $accentcolor;
+    }
+
+        input[type="radio"]:checked + label:after {
+            background: $accentcolor;
+        }
+
+        input[type="radio"]:checked + label:before {
+            width: 20px;
+            height: 20px;
+        }
